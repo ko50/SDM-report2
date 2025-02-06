@@ -1,28 +1,20 @@
 #!/usr/bin/python3
 
-import re
-                
 def calc(A,B):
         ai=str(A)
         bi=str(B)
-        p = re.compile('\d+(\.\d+)?')
-        if p.match(ai) or p.match(bi):
-                a=float(ai)
-                b=float(bi)
-                if 0<a and a<b and b<1000:
-                        valid=True
-                else:
-                        valid=False
-        else:
-                valid=False
-                
-        if valid:
-                ans=a*b
-                return ans
-        else:
+        if not (ai.isdecimal() and bi.isdecimal()):
                 return -1
-        
-                
+
+        a = int(ai)
+        b = int(bi)
+        if not (1 <= a <= 999 and 1 <= b <= 999):
+                return -1
+
+        ans = a * b
+        return ans
+
+
 def main ():
 	matchstring = ''
 	while matchstring != 'end':
